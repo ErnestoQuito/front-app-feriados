@@ -1,5 +1,7 @@
 .header-container {
     margin-bottom: 2.5rem;
+    padding: 40px;
+    text-align: center;
 }
 
 .holiday-title-main {
@@ -26,6 +28,7 @@
 }
 
 .filter-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -87,18 +90,25 @@
     vertical-align: middle;
 }
 
+.table-container tr:hover {
+    background-color: #1e293b;
+    cursor: pointer;
+}
+
 .td-date {
-    font-weight: 500;
+    font-weight: 600;
     color: #818cf8;
-    white-space: nowrap;
     width: 15%;
     font-size: 1.05rem;
+    text-transform: capitalize;
+    text-align: left;
 }
 
 .td-holiday {
     font-weight: 500;
     color: #f8fafc;
     font-size: 1.05rem;
+    text-align: left;
 }
 
 .td-is-laboral {
@@ -114,4 +124,130 @@
     font-weight: 600;
     display: inline-block;
     border: 1px solid rgba(16, 185, 129, 0.2);
+    white-space: nowrap;
+}
+
+/* 🟢 VARIANTE VERDE (Tu badge actual) */
+.is-laboral-badge.verde {
+    background-color: rgba(
+        16,
+        185,
+        129,
+        0.15
+    ); /* Verde esmeralda con opacidad */
+    color: #34d399; /* Texto verde brillante */
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* 🔴 VARIANTE ROJA (Feriados Críticos o Inamovibles) */
+.is-laboral-badge.rojo {
+    background-color: rgba(239, 68, 68, 0.15); /* Rojo con opacidad */
+    color: #f87171; /* Texto rojo pastel brillante */
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* 🟡 VARIANTE AMARILLA (Feriados Puentes u Optativos) */
+.is-laboral-badge.amarillo {
+    background-color: rgba(234, 179, 8, 0.15); /* Amarillo con opacidad */
+    color: #facc15; /* Texto amarillo brillante */
+    border-color: rgba(234, 179, 8, 0.3);
+}
+
+/* 🟠 VARIANTE NARANJA (Días Cívicos o Especiales) */
+.is-laboral-badge.naranja {
+    background-color: rgba(249, 115, 22, 0.15); /* Naranja con opacidad */
+    color: #fb923c; /* Texto naranja brillante */
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.app-footer {
+    margin-top: 80px; /* Genera el espacio prudente que querías respecto a la tabla */
+    padding: 40px 20px; /* Le da aire por debajo y a los lados */
+    border-top: 1px solid #1e293b; /* Una línea divisoria muy sutil (un gris azulado oscuro) */
+    text-align: center;
+    font-size: 0.85rem; /* Texto pequeño para que no compita visualmente */
+    color: #64748b; /* Un color gris apagado para mantener el minimalismo */
+}
+
+.footer-credits {
+    margin-top: 8px;
+}
+
+.app-footer a {
+    color: #818cf8; /* Usamos el mismo tono morado/azul de tu título principal */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.app-footer a:hover {
+    color: #a5b4fc; /* Brillo sutil cuando pasas el mouse por tu nombre */
+    text-decoration: underline;
+}
+
+/* ESTILOS PARA BADGE */
+.fila-feriado {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.fila-feriado:hover {
+    background-color: #1e293b !important; /* Brillo al pasar el mouse */
+}
+
+.fila-feriado.activa {
+    background-color: #111827;
+}
+
+/* Flecha interactiva discreta */
+.flecha-indicador {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-left: 8px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.flecha-indicador.rotar {
+    transform: rotate(180deg);
+    color: #818cf8; /* Cambia al color de tu app al abrirse */
+}
+
+.contenedor-badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end; /* Lo alinea a la derecha de la celda */
+}
+
+/* Mini badge gris para lo opcional */
+.badge-secundario {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    background-color: rgba(100, 116, 139, 0.2);
+    color: #94a3b8;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Fila desplegable con la información oculta */
+.fila-detalle {
+    background-color: rgba(30, 41, 59, 0.3);
+}
+
+.contenido-detalle {
+    padding: 16px 24px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    animation: deslizarAbajo 0.25s ease-out;
+}
+
+.texto-ley {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-style: italic;
 }
