@@ -1,75 +1,44 @@
-# React + TypeScript + Vite
+# 📅 Feriados Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Feriados Hub es una aplicación web moderna, interactiva y minimalista (SaaS-style) diseñada en modo oscuro para visualizar, filtrar y gestionar los feriados nacionales, cívicos y opcionales de diferentes países. Permite a los usuarios planificar sus días libres y puentes con total precisión y anticipación.
 
-Currently, two official plugins are available:
+¡Olvídate de las listas frías y técnicas! Feriados Hub transforma la información gubernamental en una agenda humana e interactiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Características Principales
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Diseño UI/UX Premium:** Interfaz limpia en modo oscuro optimizada para una lectura rápida y scannable.
+- **Fechas Humanizadas:** Formato amigable que resalta el día de la semana (ej. *Jue, 23 Jul*) para identificar puentes al instante.
+- **Badges de Categorización:** Identificación visual por colores del alcance del feriado (Sector Público, Sector Privado, Todo el País, Opcional).
+- **Filas Expandibles:** Detalles adicionales del feriado (descripciones y leyes de referencia como Decretos Supremos) ocultos en un acordeón interactivo para no saturar la pantalla.
+- **Geolocalización Automática:** Detecta la IP del usuario al entrar para preseleccionar su país por defecto.
+- **Arquitectura Limpia:** Frontend modularizado en componentes de React altamente mantenibles y tipados estrictamente con TypeScript.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Stack Tecnológico
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Frontend:**
+- React 18
+- TypeScript
+- Vite (Bundler ultra rápido)
+- CSS3 vanilla (Diseño modular y responsive)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Backend & Base de Datos:**
+- Node.js & Express (TypeScript)
+- PostgreSQL / MySQL (Estructura relacional de feriados y países)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
+## 🚀 Instalación y Configuración Local
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Sigue estos pasos para ejecutar el proyecto en tu máquina local:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerrequisitos
+Asegúrate de tener instalado [Node.js](https://nodejs.org/) y el gestor de paquetes [pnpm](https://pnpm.io/) (o npm/yarn).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+### 1. Clonar el repositorio
+```bash
+git clone [https://github.com/TU_USUARIO/feriados-hub-frontend.git](https://github.com/TU_USUARIO/feriados-hub-frontend.git)
+cd feriados-hub-frontend
