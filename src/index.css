@@ -63,4 +63,18 @@
 
 body {
     margin: 0;
+    background-color: var(--bg); /* ¡Esto obligará a iOS a pintar todo de oscuro! */
+    color: var(--text);
+    font: 18px/145% var(--sans);
+    letter-spacing: 0.18px;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 1024px) {
+    body {
+        font-size: 16px; /* Ajuste de letra para móviles */
+    }
 }
