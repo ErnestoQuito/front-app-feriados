@@ -3,9 +3,10 @@ import type { Holiday } from "../types";
 
 interface HolidayRowProps {
   holiday: Holiday;
+  isTheNext: boolean;
 }
 
-export default function HolidayRow({ holiday }: HolidayRowProps) {
+export default function HolidayRow({ holiday, isTheNext }: HolidayRowProps) {
   const [estaExpandido, setEstaExpandido] = useState<boolean>(false);
 
   // const obtenerConfiguracionBadge = (type: string) => {
@@ -59,9 +60,10 @@ export default function HolidayRow({ holiday }: HolidayRowProps) {
   return (
     <React.Fragment>
       {/* FILA PRINCIPAL */}
+      {/* Añadir la clase 'fila-proxima' si corresponde */}
       <tr
         onClick={() => setEstaExpandido(!estaExpandido)}
-        className={`fila-feriado ${estaExpandido ? "activa" : ""}`}
+        className={`fila-feriado ${estaExpandido ? "activa" : ""} ${isTheNext ? "fila-proxima" : ""}`}
       >
         <td className="td-date">{formatDateUX(holiday.holiday_date)}</td>
         <td className="td-holiday">

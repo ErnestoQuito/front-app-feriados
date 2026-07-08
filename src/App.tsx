@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import HolidayTable from "./components/HolidayTable";
+import NextHoliday from "./components/NextHoliday";
 
 // --- SERVER API
 const API_URL = import.meta.env.VITE_API_URL;
@@ -150,6 +151,7 @@ function App() {
           </select>
         </div>
       </section>
+      {!loading && !error && <NextHoliday holidays={holidays} />}
       <main>
         <HolidayTable holidays={holidays} loading={loading} error={error} />
       </main>

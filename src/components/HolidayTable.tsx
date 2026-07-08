@@ -16,11 +16,24 @@ export default function HolidayTable({
   if (error) return <p>{error}</p>;
   if (holidays.length === 0) return <p>No se encontraron feriados.</p>;
 
+  // LOGICA EN LA TABLA: Encontrar el ID del próximo feriado
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const nextHoliday = holidays.find((holiday) => {
+    const dateHoliday = new Date(`${holiday.holiday_date}T00:00:00`);
+    return dateHoliday >= today;
+  });
+
   return (
     <table className="table-container">
       <tbody>
         {holidays.map((holiday) => (
-          <HolidayRow key={holiday.id} holiday={holiday} />
+          <HolidayRow
+            key={holiday.id}
+            holiday={holiday}
+            isTheNext={nextHoliday?.id === holiday.id}
+          />
         ))}
       </tbody>
     </table>
