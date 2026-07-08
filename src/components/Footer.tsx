@@ -9,7 +9,7 @@ export default function Footer() {
           target="_blank"
           rel="noreferrer"
         >
-          Ernesto
+          Ernest
         </a>
       </p>
     </footer>
