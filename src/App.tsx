@@ -82,7 +82,12 @@ function App() {
         // establecemos el pais inicial del select
         setCountrySelected(codeCountryDetected);
       } catch (err) {
-        setError(err.message);
+        // validamos si err es realmente una instancia del objeto Error nativo
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Ocurrió un error inesperado.");
+        }
         setLoading(false);
       }
     };
@@ -106,7 +111,12 @@ function App() {
         setHolidays(data);
         setError(null);
       } catch (err) {
-        setError(err.message);
+        // validamos si err es realmente una instancia del objeto Error nativo
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Ocurrió un error inesperado.");
+        }
       } finally {
         setLoading(false);
       }

@@ -26,13 +26,10 @@ export default function NextHoliday({ holidays }: NextHolidayProps) {
   const difDays = Math.ceil(difTime / (1000 * 60 * 60 * 24));
 
   // 4. Determinar el mensaje dunámico de UX
-  let messageDays = "";
-  if (difDays === 0) {
-    messageDays = "🎉 ¡HOY ES FERIADO! Disfruta tu descanso.";
-  } else if (difDays === 1) {
-    messageDays = "⏳ ¡Mañana es feriado! Falta muy poco.";
-  } else {
-    messageDays = `🎯 Próximo feriado: en ${difDays} días.`;
+  const getMessage = (): string => {
+    if (difDays === 0) return "🎉 ¡HOY ES FERIADO! Disfruta tu descanso.";
+    if (difDays === 1) return "⏳ ¡Mañana es feriado! Falta muy poco.";
+    return `🎯 Próximo feriado: en ${difDays} días.`;
   }
 
   return (
@@ -40,7 +37,7 @@ export default function NextHoliday({ holidays }: NextHolidayProps) {
       <div>
         <span className="next-holiday-tag">PRÓXIMO DESCANSO</span>
         <h2 className="next-holiday-name">{nextHoliday.holiday_name}</h2>
-        <p className="next-holiday-countdown">{messageDays}</p>
+        <p className="next-holiday-countdown">{getMessage()}</p>
       </div>
     </div>
   );
