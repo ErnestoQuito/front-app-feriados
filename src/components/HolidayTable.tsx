@@ -26,16 +26,18 @@ export default function HolidayTable({
   });
 
   return (
-    <table className="table-container">
-      <tbody>
-        {holidays.map((holiday) => (
-          <HolidayRow
-            key={holiday.id}
-            holiday={holiday}
-            isTheNext={nextHoliday?.id === holiday.id}
-          />
-        ))}
-      </tbody>
-    </table>
+    <div className="table-container">
+      <table>
+        <tbody>
+          {holidays.map((holiday) => (
+            <HolidayRow
+              key={holiday.id}
+              holiday={holiday}
+              isTheNext={nextHoliday?.id === holiday.id}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
