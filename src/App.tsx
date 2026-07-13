@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/Footer";
 import HolidayTable from "./components/HolidayTable";
 import NextHoliday from "./components/NextHoliday";
@@ -166,6 +167,7 @@ function App() {
         <HolidayTable holidays={holidays} loading={loading} error={error} />
       </main>
       <Footer />
+      <Analytics />
     </>
   );
 }
