@@ -5,11 +5,9 @@
 }
 
 .holiday-title-main {
-    font-family: 2.5rem;
+    font-size: 2.5rem;
     font-weight: 800;
-
     color: #f8fafc;
-
     letter-spacing: -0.5px;
     margin: 0 0 4px 0;
 }
@@ -38,7 +36,8 @@
 
 .select-filter {
     position: relative;
-    max-width: 250px;
+    width: 100%;
+    max-width: 100%;
     display: flex;
 }
 
@@ -46,14 +45,11 @@
     width: 100%;
     padding: 12px 40px 12px 12px;
     font-size: 1rem;
-
     color: #f8fafc;
     background-color: #1e293b;
-
     border: 1px solid #334155;
     border-radius: 8px;
     cursor: pointer;
-
     appearance: none;
     -webkit-appearance: none;
 }
@@ -76,26 +72,28 @@
 
 .table-container {
     width: 100%;
-    border-collapse: collapse; /* Borra espacio doble */
     border-radius: 12px;
-    overflow: hidden; /* Para que funcionen las esquinas redondeadas */
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
     background-color: #1e293b;
+    margin-left: 10px;
+    margin-right: 10px;
     box-shadow:
         0 10px 15px -3px rgba(0, 0, 0, 0.3),
         0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    /*padding: 8px;*/ /* Espacio perimetral para las tarjetas */
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 650px;
+
 }
 
 .table-container td {
-    padding: 18px 24px;
-    vertical-align: middle;
+    display: block;
+    width: 100%;
+    padding: 0;
+    text-align: left;
 }
 
 .table-container tr:hover {
@@ -103,20 +101,26 @@ table {
     cursor: pointer;
 }
 
+/* Celda intermedia (holiday.holiday_type) */
+.table-container td:nth-child(3) {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
 .td-date {
     font-weight: 600;
     color: #818cf8;
-    width: 15%;
     font-size: 1.05rem;
     text-transform: capitalize;
-    text-align: left;
 }
 
 .td-holiday {
     font-weight: 500;
     color: #f8fafc;
     font-size: 1.05rem;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .td-is-laboral {
@@ -195,8 +199,16 @@ table {
 
 /* ESTILOS PARA BADGE */
 .fila-feriado {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+    /*background-color: #151f32;*/
+    border-radius: 8px;
+    margin-bottom: 10px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    border-left: 4px solid transparent;
 }
 
 .fila-feriado:hover {
@@ -225,7 +237,8 @@ table {
     display: flex;
     gap: 8px;
     align-items: center;
-    justify-content: flex-end; /* Lo alinea a la derecha de la celda */
+    justify-content: flex-start;
+    margin-top: 4px;
 }
 
 /* Mini badge gris para lo opcional */
@@ -242,15 +255,23 @@ table {
 
 /* Fila desplegable con la información oculta */
 .fila-detalle {
+    display: block;
     background-color: rgba(30, 41, 59, 0.3);
+    margin-top: -10px;
+    margin-bottom: 10px;
+    border-radius: 0 0 8px 8px;
+}
+
+.fila-detalle td {
+    display: block;
+    width: 100%;
 }
 
 .contenido-detalle {
-    padding: 16px 24px;
+    padding: 16px;
     font-size: 0.9rem;
     color: #94a3b8;
     line-height: 1.5;
-    animation: deslizarAbajo 0.25s ease-out;
 }
 
 .texto-ley {
@@ -296,14 +317,105 @@ table {
 /*
 1. Convertimos la fila en el nuevo punto de referencia seguro */
 .fila-feriado.fila-proxima {
-    background-color: rgba(129, 140, 248, 0.06); /* Sutil toque de fondo */
+    background-color: rgba(129, 140, 248, 0.06);
     border-left: 4px solid #818cf8;
-    transition:
-        background-color 0.2s ease,
-        border-left-color 0.2s ease;
 }
 
 .fila-proxima .td-date {
     color: #a5b4fc;
     font-weight: 700;
+}
+
+/* ==========================================
+   6. COMPORTAMIENTO DE LA TABLA: ESCRITORIO
+   (Se activa automáticamente en pantallas anchas)
+   ========================================== */
+@media (min-width: 768px) {
+    .filter-container .select-filter {
+        max-width: 250px;
+    }
+
+    .table-container {
+        padding: 0 !important;
+    }
+
+    /* Forzamos a la tabla a comportarse como tabla real */
+    .table-container table {
+        display: table !important;
+    }
+
+    /* Forzamos a las filas a ser filas reales */
+    .table-container .fila-feriado {
+        display: table-row !important;
+        background-color: transparent !important;
+        margin-bottom: 0 !important;
+        border-left: none !important;
+        gap: 0 !important;
+        padding: 0 !important;
+    }
+
+    .table-container .fila-feriado:hover {
+        background-color: #1e293b !important;
+    }
+
+    .table-container .fila-feriado.activa {
+        background-color: #111827 !important;
+    }
+
+    /* Próximo feriado original de escritorio */
+    .table-container .fila-feriado.fila-proxima {
+        background-color: rgba(129, 140, 248, 0.06) !important;
+        border-left: none !important;
+        box-shadow: inset 4px 0 0 #818cf8 !important;
+    }
+
+    /* 🚨 AQUÍ ESTABA EL CAMBIO CLAVE: Forzamos a las celdas a volver a ser celdas de tabla */
+    .table-container tr .td-date,
+    .table-container tr .td-holiday,
+    .table-container tr .td-is-laboral,
+    .table-container tr td {
+        display: table-cell !important;
+        padding: 18px 24px !important;
+        vertical-align: middle !important;
+        width: auto !important; /* Resetea el 100% de móvil */
+    }
+
+    /* Devolvemos el ancho exacto del 15% a la fecha */
+    .table-container tr .td-date {
+        width: 15% !important;
+        text-align: left !important;
+    }
+
+    /* Quitamos el flexbox móvil en escritorio para que el texto no flote a los extremos */
+    .table-container tr .td-holiday {
+        text-align: left !important;
+        display: table-cell !important;
+    }
+
+    /* Estilo original de la tercera columna (Tipo de feriado) */
+    .table-container tr td:nth-child(3) {
+        color: #64748b !important;
+        font-size: 1.05rem !important;
+    }
+
+    /* Alineaciones a la derecha del Badge */
+    .table-container tr .td-is-laboral {
+        text-align: right !important;
+    }
+
+    .table-container .contenedor-badges {
+        justify-content: flex-end !important;
+        margin-top: 0 !important;
+    }
+
+    /* Fila de detalles original en escritorio */
+    .table-container .fila-detalle {
+        display: table-row !important;
+        background-color: rgba(30, 41, 59, 0.3) !important;
+    }
+
+    .table-container .fila-detalle td {
+        display: table-cell !important;
+        padding: 16px 24px !important;
+    }
 }

@@ -88,7 +88,7 @@ export default function HolidayRow({ holiday, isTheNext }: HolidayRowProps) {
       {/* FILA DESPLEGABLE */}
       {estaExpandido && (
         <tr className="fila-detalle">
-          <td colSpan={3}>
+          <td colSpan={4}>
             <div className="contenido-detalle">
               {holiday.holiday_description && (
                 <p>
